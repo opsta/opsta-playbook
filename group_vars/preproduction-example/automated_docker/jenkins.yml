@@ -1,0 +1,34 @@
+---
+automated_docker_container_jenkins:
+  jenkins:
+    image: jenkins:2.7.1-alpine
+    name: jenkins
+    hostname: jenkins
+    published_ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+
+automated_docker_jenkins_install_plugins:
+  - workflow-aggregator
+  - docker-plugin
+  - gitlab-hook
+  - gitlab-plugin
+  - active-directory
+  - role-strategy
+# automated_docker_jenkins_admin_username: myuser
+# automated_docker_jenkins_admin_password_salt: mysalt
+# automated_docker_jenkins_admin_password: CHANGEME
+# automated_docker_jenkins_old_admin_password: CHANGEME
+automated_docker_jenkins_ad_domain: mydomain.com
+automated_docker_jenkins_ad_server: 192.168.1.10:3268
+automated_docker_jenkins_ad_bind_name: CN=Users,DC=mydomain,DC=com
+automated_docker_jenkins_ad_bind_password: CHANGEME
+automated_docker_jenkins_admin_role_user_list:
+  - adminuser1
+  - adminuser2
+automated_docker_jenkins_user_role_user_list:
+  - user1
+  - user2

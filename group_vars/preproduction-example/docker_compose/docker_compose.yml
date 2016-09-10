@@ -1,0 +1,5 @@
+---
+# You can change this to the version you want to install
+#docker_compose_install_version: 1.8.0
+#docker_compose_install_url: https://github.com/docker/compose/releases/download/{{ docker_compose_install_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
+#docker_compose_install_path: /usr/local/bin/docker-compose

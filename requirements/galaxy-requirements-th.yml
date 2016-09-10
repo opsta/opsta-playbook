@@ -1,0 +1,20 @@
+---
+# Thailand mirror
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-automated_docker.git
+  name: opsta.automated_docker
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-host_preparation.git
+  name: opsta.host_preparation
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-docker_compose.git
+  name: opsta.docker_compose
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-docker_machine.git
+  name: opsta.docker_machine
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-install_docker.git
+  name: opsta.install_docker
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-newrelic.git
+  name: opsta.newrelic
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-keepalived.git
+  name: opsta.keepalived
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-openstack_launch_instances.git
+  name: opsta.openstack_launch_instances
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-replace_vault.git
+  name: opsta.replace_vault

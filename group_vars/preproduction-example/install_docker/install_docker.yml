@@ -1,0 +1,14 @@
+---
+# This will configure DOCKER_OPTS. Default is to use overlay as storage driver
+#install_docker_option: --live-restore --storage-driver=overlay2
+
+# Private Docker Registry configuration. Change to true and configure
+# login information
+#install_docker_private_login: false
+#install_docker_registry_username: registry
+#install_docker_registry_password: CHANGEDOCKERPASSWORDHERE
+#install_docker_registry_email: docker@example.com
+#install_docker_registry_url: registry.example.com
+
+# Change this to true if you want to install docker-py
+#install_docker_py: false

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: no
+  become: true
+  pre_tasks:
+    - name: Install Python 2 first
+      raw: python --version || apt-get update && apt-get install -y python
+  roles:
+    - opsta.host_preparation

@@ -1,0 +1,26 @@
+---
+# Docker Machine installation configuration
+#docker_machine_install_version: 0.8.0
+#docker_machine_install_url: https://github.com/docker/machine/releases/download/v{{ docker_machine_install_version }}/docker-machine-{{ ansible_system }}-{{ ansible_architecture }}
+#docker_machine_install_path: /usr/local/bin/docker-machine
+#docker_machine_install_checksum: md5:bf73bbfee97fad04d3ff20151b1847fa
+
+# Extra parameter when do docker-machine create command
+#docker_machine_extra_parameters: --engine-storage-driver overlay --engine-registry-mirror https://registry-mirror.example.com
+
+# Storage path for docker-machine command
+#docker_machine_storage_path: "{{ playbook_dir }}/files/docker-machine"
+
+# Search and replace Docker Machine config.json configuration
+# YOU SHOULDN'T CHANGE THIS AT ALL EXCEPT YOU KNOW WHAT ARE YOU DOING!
+#docker_machine_config_file: "{{ docker_machine_storage_path }}/machines/{{ inventory_hostname }}/config.json"
+#docker_machine_config_variables:
+#  - { regexp: '"StorePath": "(.*)",$', replace: '"StorePath": "{{ docker_machine_storage_path }}",' }
+#  - { regexp: '"StorePath": "(.*)"$', replace: '"StorePath": "{{ docker_machine_storage_path }}/machines/{{ inventory_hostname }}"' }
+#  - { regexp: '"CertDir": "(.*)",$', replace: '"CertDir": "{{ docker_machine_storage_path }}/certs",' }
+#  - { regexp: '"CaCertPath": "(.*)",$', replace: '"CaCertPath": "{{ docker_machine_storage_path }}/certs/ca.pem",' }
+#  - { regexp: '"CaPrivateKeyPath": "(.*)",$', replace: '"CaPrivateKeyPath": "{{ docker_machine_storage_path }}/certs/ca-key.pem",' }
+#  - { regexp: '"ServerCertPath": "(.*)",$', replace: '"ServerCertPath": "{{ docker_machine_storage_path }}/machines/{{ inventory_hostname }}/server.pem",' }
+#  - { regexp: '"ServerKeyPath": "(.*)",$', replace: '"ServerKeyPath": "{{ docker_machine_storage_path }}/machines/{{ inventory_hostname }}/server-key.pem",' }
+#  - { regexp: '"ClientKeyPath": "(.*)",$', replace: '"ClientKeyPath": "{{ docker_machine_storage_path }}/certs/key.pem",' }
+#  - { regexp: '"ClientCertPath": "(.*)",$', replace: '"ClientCertPath": "{{ docker_machine_storage_path }}/certs/cert.pem",' }

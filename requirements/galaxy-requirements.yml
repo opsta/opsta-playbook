@@ -1,0 +1,10 @@
+---
+- src: opsta.automated_docker
+- src: opsta.docker_compose
+- src: opsta.docker_machine
+- src: opsta.host_preparation
+- src: opsta.install_docker
+- src: opsta.keepalived
+- src: opsta.newrelic
+- src: opsta.openstack_launch_instances
+- src: opsta.replace_vault

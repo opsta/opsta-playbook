@@ -1,0 +1,36 @@
+---
+service_name: haproxy-test
+os_instance:
+  image: trusty-server-cloudimg-amd64
+  key_name: MYKEYNAME
+  flavor: m1.small
+  network: dev-network
+  security_groups: allow-all
+  volume_size: 16
+  project_name: dev
+  ansible_user: ubuntu
+  groups: idc-aws
+  count: 2
+
+os_pdns_domain: example.org
+os_pdns_key_api: CHANGEME
+os_pdns_authoritative_server: http://192.168.1.11:8081
+
+keepalived_auth_pass: CHANGEME
+keepalived_vip: 192.168.2.10
+keepalived_vri: 10
+keepalived_test_ping_ip: 8.8.8.8
+
+keepalived_os_assign_floating_ip: true
+keepalived_os_external_network: external-network
+keepalived_os_network: dev-network
+keepalived_os_security_groups:
+  - http_and_https
+
+automated_docker_name: haproxy
+automated_docker_haproxy_service_name: nginx-test
+# Domain to query srv record from DNS server
+automated_docker_haproxy_domain_name: "{{ os_pdns_domain }}"
+automated_docker_haproxy_ssl_certificate_pem_file: example.org.pem
+automated_docker_haproxy_virtual_hosts:
+  - www.example.org

@@ -1,0 +1,29 @@
+---
+service_name: nginx-test
+os_instance:
+  image: trusty-server-cloudimg-amd64
+  key_name: MYKEYNAME
+  flavor: m1.small
+  network: dev-network
+  security_groups: allow-all
+  volume_size: 16
+  project_name: dev
+  ansible_user: ubuntu
+  groups: idc-aws
+  count: 3
+  volumes:
+    data:
+      size: 40
+      path: /var/lib/nginx
+    log:
+      size: 8
+      path: /log
+
+os_pdns_domain: example.org
+os_pdns_key_api: CHANGEME
+os_pdns_authoritative_server: http://192.168.1.11:8081
+os_pdns_srv_port: 80
+
+newrelic_license_key: CHANGEME
+
+automated_docker_name: nginx

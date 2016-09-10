@@ -1,0 +1,6 @@
+---
+- name: Clone Vault repository and replace to this playbook
+  hosts: localhost
+  connection: local
+  roles:
+    - role: opsta.replace_vault

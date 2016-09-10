@@ -1,0 +1,70 @@
+---
+automated_docker_gitlab_container_name: gitlab
+automated_docker_gitlab_postgresql_container_name: gitlab-postgresql
+automated_docker_gitlab_redis_container_name: gitlab-redis
+automated_docker_gitlab_registry_container_name: gitlab-registry
+
+automated_docker_container_default:
+  gitlab:
+    image: sameersbn/gitlab:8.10.3
+    name: "{{ automated_docker_gitlab_container_name }}"
+    hostname: "{{ automated_docker_gitlab_container_name }}"
+    links:
+      - "{{ automated_docker_gitlab_postgresql_container_name }}:postgresql"
+      - "{{ automated_docker_gitlab_redis_container_name }}:redisio"
+    published_ports:
+      - "22:22"
+      - "172.17.0.1:10080:80"
+    env:
+      # NOTE MUST QUOTE 'true'
+      GITLAB_SECRETS_DB_KEY_BASE: CHANGEME
+      GITLAB_REGISTRY_ENABLED: 'true'
+      GITLAB_REGISTRY_HOST: registry.example.com
+      GITLAB_REGISTRY_API_URL: https://registry.example.com
+      GITLAB_REGISTRY_ISSUER: gitlab-issuer
+      GITLAB_REGISTRY_KEY_PATH: /home/git/data/registry-auth.key
+  postgresql:
+    image: postgres:9.5.3
+    name: "{{ automated_docker_gitlab_postgresql_container_name }}"
+    hostname: "{{ automated_docker_gitlab_postgresql_container_name }}"
+    env:
+      POSTGRES_USER: gitlab
+      POSTGRES_PASSWORD: CHANGEME
+      POSTGRES_DB: gitlab
+    extensions:
+      - pg_trgm
+  redis:
+    image: redis:3.2.1-alpine
+    name: "{{ automated_docker_gitlab_redis_container_name }}"
+    hostname: "{{ automated_docker_gitlab_redis_container_name }}"
+  docker_registry:
+    image: registry:2.5.0
+    name: "{{ automated_docker_gitlab_registry_container_name }}"
+    hostname: "{{ automated_docker_gitlab_registry_container_name }}"
+    published_ports:
+      - "172.17.0.1:5000:5000"
+    volumes:
+      - /var/lib/registry
+      - /etc/docker/registry
+    env:
+      REGISTRY_LOG_LEVEL: info
+      REGISTRY_AUTH_TOKEN_REALM: https://git.example.com/jwt/auth
+      REGISTRY_AUTH_TOKEN_SERVICE: container_registry
+      REGISTRY_AUTH_TOKEN_ISSUER: gitlab-issuer
+      REGISTRY_STORAGE_DELETE_ENABLED: true
+      REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE: /etc/docker/registry/registry-auth.crt
+  nginx:
+    image: winggundamth/nginx:xenial
+    name: nginx
+    hostname: nginx
+    published_ports:
+      - "80:80"
+      - "443:443"
+
+# automated_docker_gitlab_action_backup_to_swift: true
+# automated_docker_gitlab_action_backup_swift_container_name: backups-gitlab
+# automated_docker_gitlab_action_backup_swift_folder:
+#
+# automated_docker_gitlab_action_restore_swift_container_name: "{{ automated_docker_gitlab_action_backup_swift_container_name }}"
+# automated_docker_gitlab_action_restore_file_path: "{{ playbook_dir }}/gitlab-container/1469319388_gitlab_backup.tar"
+# automated_docker_gitlab_action_restore_swift_path: 1470234381_gitlab_backup.tar

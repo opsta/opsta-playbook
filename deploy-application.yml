@@ -1,0 +1,40 @@
+---
+- name: Install python2
+  hosts: all
+  gather_facts: no
+  become: true
+  tasks:
+    - name: Configure apt-cacher-ng
+      raw: "(test -f /etc/apt/apt.conf.d/11proxy ||
+        echo 'Acquire::http::Proxy \"{{ host_preparation_apt_cacher_ng }}\";' >
+          /etc/apt/apt.conf.d/11proxy)"
+      when: host_preparation_apt_cacher_ng is defined
+    - name: Install Python 2
+      raw: "python --version || apt-get update && apt-get install -y python"
+
+- name: Configure instance(s)
+  hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - { role: opsta.host_preparation, when: ansible_uptime_seconds < 300 }
+    - { role: opsta.install_docker, when: ansible_uptime_seconds < 300 }
+    - { role: opsta.newrelic, when: ansible_uptime_seconds < 300 and newrelic_license_key is defined }
+
+- name: Configure Docker Machine
+  hosts: all
+  connection: local
+  gather_facts: yes
+  become: false
+  roles:
+    - role: opsta.docker_machine
+      docker_machine_create: true
+      docker_machine_manage_config: true
+
+- name: Deploy service
+  hosts: all
+  connection: local
+  gather_facts: yes
+  serial: 1
+  roles:
+    - { role: opsta.automated_docker, when: automated_docker_name is defined }

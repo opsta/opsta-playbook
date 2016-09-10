@@ -1,0 +1,42 @@
+---
+automated_docker_container_graylog:
+  graylog:
+    image: graylog2/server:2.0.3-2
+    name: "{{ automated_docker_graylog_container_name }}"
+    hostname: "{{ automated_docker_graylog_container_name }}"
+    links:
+      - "{{ automated_docker_mongo_container_name }}:mongo"
+      - "{{ automated_docker_elasticsearch_container_name }}:elasticsearch"
+    published_ports:
+      - "9000:9000"
+      - "12900:12900"
+      - "12201:12201"
+      - "12201:12201/udp"
+      - "514:5140"
+      - "514:5140/udp"
+    exposed_ports:
+      - "12201"
+      - "12201/udp"
+      - "5140"
+      - "5140/udp"
+    env:
+      GRAYLOG_PASSWORD_SECRET: CHANGEME
+      GRAYLOG_ROOT_PASSWORD_SHA2: CHANGEME
+      GRAYLOG_REST_TRANSPORT_URI: "http://{{ ansible_host | default('172.17.0.1') }}:12900"
+  elasticsearch:
+    image: elasticsearch:2.3.4
+    name: "{{ automated_docker_elasticsearch_container_name }}"
+    hostname: "{{ automated_docker_elasticsearch_container_name }}"
+    command: elasticsearch -Des.node.name="{{ automated_docker_elasticsearch_cluster_name }}"
+    env:
+      ES_HEAP_SIZE: 1g
+  mongo:
+    image: mongo:3.3.9
+    name: "{{ automated_docker_mongo_container_name }}"
+    hostname: "{{ automated_docker_mongo_container_name }}"
+
+
+automated_docker_graylog_container_name: graylog-example
+automated_docker_mongo_container_name: graylog-example-mongo
+automated_docker_elasticsearch_container_name: graylog-example-elasticsearch
+automated_docker_elasticsearch_cluster_name: GraylogExample

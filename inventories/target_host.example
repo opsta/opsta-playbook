@@ -1,0 +1,9 @@
+# NOTE: For role opsta.host_preparation
+# YOU MUST HAVE ansible_port variable OR ELSE REBOOT TASK WON'T WORK
+
+[production-example]
+prod-01.example.com ansible_user=ubuntu ansible_host=10.10.10.11 ansible_port=22
+prod-02.example.com ansible_user=ubuntu ansible_host=10.10.10.12 ansible_port=22
+
+[preproduction-example]
+pre-01.example.com ansible_user=ubuntu ansible_host=10.10.10.21 ansible_port=22

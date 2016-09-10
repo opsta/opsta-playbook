@@ -1,0 +1,8 @@
+---
+- name: Run automated docker container role
+  hosts: all
+  connection: local
+  gather_facts: no
+  serial: 1
+  roles:
+    - role: opsta.automated_docker
