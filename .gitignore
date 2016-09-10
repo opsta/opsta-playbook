@@ -1,5 +1,5 @@
 roles/*
-!roles/.REMOVEME
+!roles/README.md
 group_vars/*/*vault*.yml
 group_vars/*test*
 group_vars/*/*test*
@@ -8,7 +8,7 @@ files/groups/*/nginx/certs/*
 files/groups/*test*
 files/groups/*/*/id_rsa
 files/docker-machine/*
-!files/docker-machine/.REMOVEME
+!files/docker-machine/README.md
 inventories/*test*
 inventories/*/*test*
 .vault*
