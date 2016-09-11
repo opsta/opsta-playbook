@@ -1,0 +1,18 @@
+---
+- name: Launch OpenStack instance(s)
+  hosts: all
+  connection: local
+  gather_facts: no
+  roles:
+    - opsta.openstack_launch_instances
+
+- name: Configure Docker Machine
+  hosts: launched_openstack_instances
+  connection: local
+  gather_facts: yes
+  become: false
+  roles:
+    - role: opsta.docker_machine
+      docker_machine_create: true
+      docker_machine_manage_config: true
+      docker_machine_remove: true
