@@ -45,7 +45,7 @@
 - name: Deploy service
   hosts: launched_openstack_instances
   connection: local
-  gather_facts: no
+  gather_facts: yes
   serial: 1
   roles:
     - role: opsta.automated_docker
@@ -53,7 +53,7 @@
 
 - name: Deploy Keepalived
   hosts: launched_openstack_instances
-  gather_facts: no
+  gather_facts: yes
   become: true
   roles:
     - role: opsta.keepalived
@@ -65,7 +65,7 @@
 - name: Deploy Sensu Client
   hosts: launched_openstack_instances
   connection: local
-  gather_facts: no
+  gather_facts: yes
   serial: 1
   roles:
     - role: opsta.automated_docker

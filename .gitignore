@@ -8,7 +8,7 @@ files/groups/*/nginx/certs/*
 files/groups/*test*
 files/groups/*/*/id_rsa
 files/docker-machine/*
-!files/docker-machine/README.md
+!files/docker-machine/.REMOVEME
 inventories/*test*
 inventories/*/*test*
 .vault*
