@@ -1,0 +1,73 @@
+---
+- name: Launch OpenStack instance(s)
+  hosts: all
+  connection: local
+  gather_facts: no
+  roles:
+    - opsta.openstack_launch_instances
+
+- name: Install python2
+  hosts: launched_openstack_instances
+  gather_facts: no
+  become: true
+  tasks:
+    - name: Configure apt-cacher-ng
+      raw: "(test -f /etc/apt/apt.conf.d/11proxy ||
+        echo 'Acquire::http::Proxy \"{{ host_preparation_apt_cacher_ng }}\";' >
+          /etc/apt/apt.conf.d/11proxy)"
+      when: host_preparation_apt_cacher_ng is defined
+    - name: Install Python 2
+      raw: "python --version || apt-get update && apt-get install -y python"
+
+- name: Configure instance(s)
+  hosts: launched_openstack_instances
+  gather_facts: yes
+  become: true
+  roles:
+    - role: opsta.host_preparation
+    - role: opsta.install_docker
+    - role: opsta.newrelic
+      when: newrelic_license_key is defined
+
+- name: Configure Docker Machine
+  hosts: launched_openstack_instances
+  connection: local
+  gather_facts: yes
+  become: false
+  roles:
+    - role: opsta.docker_machine
+      docker_machine_create: true
+      docker_machine_manage_config: true
+      when: |
+        automated_docker_name is defined or
+        automated_docker_sensu_client_rabbitmq_host is defined
+
+- name: Deploy service
+  hosts: launched_openstack_instances
+  connection: local
+  gather_facts: no
+  serial: 1
+  roles:
+    - role: opsta.automated_docker
+      when: automated_docker_name is defined
+
+- name: Deploy Keepalived
+  hosts: launched_openstack_instances
+  gather_facts: no
+  become: true
+  roles:
+    - role: opsta.keepalived
+      when: |
+        automated_docker_name is defined and
+        automated_docker_name == 'haproxy' and
+        os_instance.count > 1
+
+- name: Deploy Sensu Client
+  hosts: launched_openstack_instances
+  connection: local
+  gather_facts: no
+  serial: 1
+  roles:
+    - role: opsta.automated_docker
+      automated_docker_name: sensu_client
+      when: automated_docker_sensu_client_rabbitmq_host is defined

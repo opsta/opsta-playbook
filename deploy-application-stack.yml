@@ -1,6 +1,13 @@
 ---
-- name: Install python2
+- name: Launch OpenStack instance(s)
   hosts: all
+  connection: local
+  gather_facts: no
+  roles:
+    - opsta.openstack_launch_instances
+
+- name: Install python2
+  hosts: launched_openstack_instances
   gather_facts: no
   become: true
   tasks:
@@ -13,7 +20,7 @@
       raw: "python --version || apt-get update && apt-get install -y python"
 
 - name: Deploy service
-  hosts: all
+  hosts: launched_openstack_instances
   connection: local
   gather_facts: no
   serial: 1
