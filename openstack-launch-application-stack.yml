@@ -12,9 +12,8 @@
   become: true
   tasks:
     - name: Configure apt-cacher-ng
-      raw: "(test -f /etc/apt/apt.conf.d/11proxy ||
-        echo 'Acquire::http::Proxy \"{{ host_preparation_apt_cacher_ng }}\";' >
-          /etc/apt/apt.conf.d/11proxy)"
+      raw: "echo 'Acquire::http::Proxy \"{{ host_preparation_apt_cacher_ng }}\";' >
+          /etc/apt/apt.conf.d/11proxy"
       when: host_preparation_apt_cacher_ng is defined
     - name: Install Python 2
       raw: "python --version || apt-get update && apt-get install -y python"
@@ -45,6 +44,8 @@
 - name: Deploy service
   hosts: launched_openstack_instances
   connection: local
+  # NOTE Still need gather_facts = yes because of work around on Docker for Mac
+  # and Xenial work around on Sensu Client
   gather_facts: yes
   serial: 1
   roles:
@@ -65,6 +66,8 @@
 - name: Deploy Sensu Client
   hosts: launched_openstack_instances
   connection: local
+  # NOTE Still need gather_facts = yes because of work around on Docker for Mac
+  # and Xenial work around on Sensu Client
   gather_facts: yes
   serial: 1
   roles:

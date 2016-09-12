@@ -1,5 +1,5 @@
 roles/*
-!roles/README.md
+!roles/.REMOVEME
 group_vars/*/*vault*.yml
 group_vars/*test*
 group_vars/*/*test*

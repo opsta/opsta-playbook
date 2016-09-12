@@ -4,9 +4,8 @@
   become: true
   pre_tasks:
     - name: Configure apt-cacher-ng
-      raw: "(test -f /etc/apt/apt.conf.d/11proxy ||
-        echo 'Acquire::http::Proxy \"{{ host_preparation_apt_cacher_ng }}\";' >
-          /etc/apt/apt.conf.d/11proxy)"
+      raw: "echo 'Acquire::http::Proxy \"{{ host_preparation_apt_cacher_ng }}\";' >
+          /etc/apt/apt.conf.d/11proxy"
       when: host_preparation_apt_cacher_ng is defined
     - name: Install Python 2 first
       raw: python --version || apt-get update && apt-get install -y python

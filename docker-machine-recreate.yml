@@ -1,0 +1,10 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: yes
+  become: false
+  roles:
+    - role: opsta.docker_machine
+      docker_machine_create: true
+      docker_machine_manage_config: true
+      docker_machine_remove: true
