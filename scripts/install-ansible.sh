@@ -12,8 +12,7 @@ echo "Patch Ansible"
 # https://github.com/ansible/ansible/commits/devel/lib/ansible/playbook/play_context.py
 PYTHON_LIB_PATH=$(echo 'import os; from ansible.playbook import play_context; print os.path.dirname(play_context.__file__);' | python -)
 rm "$PYTHON_LIB_PATH/play_context.pyc"
-wget -O "$PYTHON_LIB_PATH/play_context.py" \
-  https://raw.githubusercontent.com/ansible/ansible/da5b0c39c9799c08623fb192ed7dd9d920ba740a/lib/ansible/playbook/play_context.py
+sed -i'' -e '417,418 s/^/#/' "$PYTHON_LIB_PATH/play_context.py"
 
 # https://github.com/ansible/ansible/commits/devel/lib/ansible/plugins/connection/docker.py
 PYTHON_LIB_PATH=$(echo 'import os; from ansible.plugins.connection import docker; print os.path.dirname(docker.__file__);' | python -)
