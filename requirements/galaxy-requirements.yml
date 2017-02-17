@@ -9,3 +9,4 @@
 - src: opsta.openstack_launch_instances
 - src: opsta.replace_vault
 - src: opsta.telegraf
+- src: opsta.mariadb

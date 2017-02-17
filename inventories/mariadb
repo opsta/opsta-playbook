@@ -1,0 +1,9 @@
+[mariadb-master]
+db-1 ansible_user=ubuntu ansible_host=172.18.0.1 ansible_port=22
+
+[mariadb-slave]
+db2 ansible_user=ubuntu ansible_host=172.18.0.2 ansible_port=22
+
+[mariadb:children]
+mariadb-master
+mariadb-slave

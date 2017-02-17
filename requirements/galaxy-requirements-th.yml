@@ -20,3 +20,5 @@
   name: opsta.replace_vault
 - src: git+https://git-mirror.winginfotech.net/opsta/ansible-telegraf.git
   name: opsta.telegraf
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-mariadb.git
+  name: opsta.mariadb
