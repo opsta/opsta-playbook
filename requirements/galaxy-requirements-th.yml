@@ -22,3 +22,7 @@
   name: opsta.telegraf
 - src: git+https://git-mirror.winginfotech.net/opsta/ansible-mariadb.git
   name: opsta.mariadb
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-php.git
+  name: opsta.php
+- src: git+https://git-mirror.winginfotech.net/opsta/ansible-cephfs.git
+  name: opsta.cephfs

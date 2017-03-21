@@ -1,0 +1,5 @@
+ansible
+boto
+dnspython
+docker-py
+shade
