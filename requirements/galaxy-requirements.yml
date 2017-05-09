@@ -12,3 +12,5 @@
 - src: opsta.mariadb
 - src: opsta.php
 - src: opsta.cephfs
+- src: git+https://github.com/opsta/ansible-ntp.git
+  name: opsta.ntp

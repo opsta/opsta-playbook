@@ -26,3 +26,5 @@
   name: opsta.php
 - src: git+https://git-mirror.opsta.io/opsta/ansible-cephfs.git
   name: opsta.cephfs
+- src: git+https://github.com/opsta/ansible-ntp.git
+  name: opsta.ntp
