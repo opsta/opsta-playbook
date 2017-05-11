@@ -13,6 +13,8 @@
 - src: opsta.php
 - src: opsta.cephfs
 - src: opsta.ntp
+- src: opsta.gitlab
+- src: opsta.gitlab_runner
 - src: opsta.pdns_admin
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
