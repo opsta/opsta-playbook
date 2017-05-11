@@ -12,7 +12,7 @@
 - src: opsta.mariadb
 - src: opsta.php
 - src: opsta.cephfs
-- src: git+https://github.com/opsta/ansible-ntp.git
-  name: opsta.ntp
+- src: opsta.ntp
+- src: opsta.pdns_admin
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
