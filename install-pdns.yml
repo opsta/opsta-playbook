@@ -1,6 +1,8 @@
 ---
+# Need to run one-by-one host to advoid import database problem
 - hosts: all
   gather_facts: yes
   become: true
+  serial: 1
   roles:
     - opsta.pdns
