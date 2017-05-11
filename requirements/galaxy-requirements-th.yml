@@ -32,3 +32,5 @@
   name: opsta.ntp
 - src: git+https://git-mirror.opsta.io/ansible/ansible-pdns.git
   name: opsta.pdns
+- src: git+https://git-mirror.opsta.io/ansible/ansible-pdns_recursor.git
+  name: opsta.pdns

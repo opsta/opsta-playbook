@@ -16,3 +16,5 @@
 - src: opsta.pdns_admin
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
+- src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git
+  name: opsta.pdns
