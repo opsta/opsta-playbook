@@ -8,7 +8,7 @@
           /etc/apt/apt.conf.d/11proxy"
       when: host_preparation_apt_cacher_ng is defined
     - name: Install Python 2 first
-      raw: python --version || apt-get update && apt-get install -y python
+      raw: python --version || apt update && apt install -y python
   roles:
     - opsta.host_preparation
 
