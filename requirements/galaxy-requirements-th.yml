@@ -34,7 +34,9 @@
   name: opsta.gitlab
 - src: git+https://git-mirror.opsta.io/opsta/ansible-gitlab_runner.git
   name: opsta.gitlab_runner
+- src: git+https://git-mirror.opsta.io/opsta/ansible-nginx.git
+  name: opsta.nginx
 - src: git+https://git-mirror.opsta.io/ansible/ansible-pdns.git
   name: opsta.pdns
 - src: git+https://git-mirror.opsta.io/ansible/ansible-pdns_recursor.git
-  name: opsta.pdns
+  name: opsta.pdns_recursor

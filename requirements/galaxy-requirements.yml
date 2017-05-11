@@ -15,8 +15,9 @@
 - src: opsta.ntp
 - src: opsta.gitlab
 - src: opsta.gitlab_runner
+- src: opsta.nginx
 - src: opsta.pdns_admin
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git
-  name: opsta.pdns
+  name: opsta.pdns_recursor
