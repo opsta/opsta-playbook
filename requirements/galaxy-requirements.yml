@@ -8,7 +8,9 @@
 - src: opsta.newrelic
 - src: opsta.openstack_launch_instances
 - src: opsta.replace_vault
+- src: opsta.influxdb
 - src: opsta.telegraf
+- src: opsta.grafana
 - src: opsta.mariadb
 - src: opsta.php
 - src: opsta.cephfs
