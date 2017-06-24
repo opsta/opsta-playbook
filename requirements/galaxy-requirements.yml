@@ -20,6 +20,7 @@
 - src: opsta.nginx
 - src: opsta.letsencrypt
 - src: opsta.pdns_admin
+- src: opsta.apt_cacher_ng
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git
