@@ -31,7 +31,7 @@
 - src: git+https://git-mirror.opsta.io/opsta/ansible-cephfs.git
   name: opsta.cephfs
 - src: git+https://git-mirror.opsta.io/opsta/ansible-pdns_admin.git
-  name: opsta.pdns
+  name: opsta.pdns_admin
 - src: git+https://git-mirror.opsta.io/opsta/ansible-ntp.git
   name: opsta.ntp
 - src: git+https://git-mirror.opsta.io/opsta/ansible-gitlab.git
