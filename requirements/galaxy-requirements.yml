@@ -22,6 +22,7 @@
 - src: opsta.pdns_admin
 - src: opsta.apt_cacher_ng
 - src: opsta.haproxy
+- src: opsta.memcached
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git

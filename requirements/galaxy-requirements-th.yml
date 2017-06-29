@@ -46,6 +46,8 @@
   name: opsta.apt_cacher_ng
 - src: git+https://git-mirror.opsta.io/opsta/ansible-haproxy.git
   name: opsta.haproxy
+- src: git+https://git-mirror.opsta.io/opsta/ansible-memcached.git
+  name: opsta.memcached
 - src: git+https://git-mirror.opsta.io/ansible/ansible-pdns.git
   name: opsta.pdns
 - src: git+https://git-mirror.opsta.io/ansible/ansible-pdns_recursor.git
