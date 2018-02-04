@@ -1,4 +1,10 @@
 ---
+# Change to true if you want to use Ubuntu official repository
+#host_preparation_change_to_ubuntu_official_repository: false
+
+# Change to true if you want to install latest Ubuntu kernel
+#host_preparation_install_latest_kernel: false
+
 # Uncomment this line if you want to use apt-cacher-ng
 #host_preparation_apt_cacher_ng: http://apt-cacher-ng.example.com:3142
 
