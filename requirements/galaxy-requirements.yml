@@ -21,6 +21,7 @@
 - src: opsta.letsencrypt
 - src: opsta.pdns_admin
 - src: opsta.apt_cacher_ng
+- src: opsta.jenkins
 - src: opsta.haproxy
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
