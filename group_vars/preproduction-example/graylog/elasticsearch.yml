@@ -1,0 +1,2 @@
+---
+elasticsearch_apt_repo: deb https://artifacts.elastic.co/packages/5.x/apt stable main

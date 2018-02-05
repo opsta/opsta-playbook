@@ -1,0 +1,6 @@
+---
+le_domains:
+  - domain: git.example.com
+    method: standalone
+    key_path: /etc/gitlab/ssl/git.example.com.key
+    fullchain_path: /etc/gitlab/ssl/git.example.com.crt
