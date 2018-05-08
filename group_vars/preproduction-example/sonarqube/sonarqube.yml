@@ -1,0 +1,7 @@
+---
+sonarqube_jdbc_url: jdbc:postgresql://localhost/sonarqube
+sonarqube_jdbc_username: sonarqube
+sonarqube_jdbc_password: CHANGEME
+sonarqube_web_host: "127.0.0.1"
+
+sonarqube_all_in_one: true

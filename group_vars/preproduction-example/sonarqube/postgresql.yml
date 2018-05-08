@@ -1,0 +1,8 @@
+---
+postgresql_databases:
+  - sonarqube
+
+postgresql_users:
+  - username: sonarqube
+    password: CHANGEME
+    db: sonarqube

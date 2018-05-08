@@ -28,6 +28,13 @@
 - src: opsta.elasticsearch
 - src: opsta.graylog
 - src: opsta.memcached
+- src: opsta.erlang
+- src: opsta.postgresql
+- src: opsta.rabbitmq
+- src: opsta.redis
+- src: opsta.sensu
+- src: opsta.sonarqube
+- src: opsta.uchiwa
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git
