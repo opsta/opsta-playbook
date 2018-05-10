@@ -2,4 +2,4 @@ ansible
 boto
 dnspython
 docker
-shade
+python-openstackclient

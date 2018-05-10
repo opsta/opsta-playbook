@@ -1,0 +1,19 @@
+---
+le_domains:
+  - domain: influxdb.example.com
+    method: standalone
+    key_path: /etc/influxdb/ssl/influxdb.example.com.key
+    key_chmod: u=rw,g=r,o=r
+    fullchain_path: /etc/influxdb/ssl/influxdb.example.com.crt
+  - domain: grafana.example.com
+    method: standalone
+    key_path: /etc/grafana/ssl/grafana.example.com.key
+    fullchain_path: /etc/grafana/ssl/grafana.example.com.crt
+  - domain: uchiwa.example.com
+    method: standalone
+    key_path: /etc/uchiwa/ssl/uchiwa.example.com.key
+    fullchain_path: /etc/uchiwa/ssl/uchiwa.example.com.crt
+  - domain: sensu-grid.example.com
+    method: standalone
+    key_path: /etc/sensu-grid/ssl/sensu-grid.example.com.key
+    fullchain_path: /etc/sensu-grid/ssl/sensu-grid.example.com.crt

@@ -1,0 +1,23 @@
+---
+influxdb_config:
+  http:
+    auth_enabled: true
+
+influxdb_databases:
+  - telegraf
+  - test
+
+influxdb_credentials_admin:
+  - username: admin
+    password: CHANGEME
+
+influxdb_credentials_user:
+  - username: telegraf
+    password: CHANGEME
+    databases:
+      - all.telegraf
+      - all.test
+  - username: test
+    password: CHANGEME
+    databases:
+      - all.test
