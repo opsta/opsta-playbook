@@ -1,0 +1,11 @@
+{
+	"checks": {
+		"sample": {
+			"command": "echo -n OK",
+			"subscribers": [
+				"test_echo"
+			],
+			"interval": 60
+		}
+	}
+}
