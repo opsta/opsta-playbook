@@ -3,4 +3,5 @@
   gather_facts: yes
   become: true
   roles:
+    - opsta.java
     - opsta.jenkins
