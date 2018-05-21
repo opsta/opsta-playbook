@@ -1,0 +1,54 @@
+{
+	"api": {
+		"host": "localhost",
+		"port": 4567
+	},
+	"checks": {
+		"sample": {
+			"command": "echo -n OK",
+			"subscribers": [
+				"test_echo"
+			],
+			"interval": 60
+		}
+	},
+	"client": {
+		"name": "localhost",
+		"address": "127.0.0.1",
+		"subscriptions": [
+			"test_echo"
+		]
+	},
+	"filters": {
+    "check_state": {
+      "attributes": {
+        "action": "eval: %w(create resolve).include? value.to_s",
+        "occurrences": "eval: value != 1 || value % 5 == 0 ||':::action:::' == 'create'"
+      },
+      "negate": false
+    }
+	},
+	"handlers": {
+		"default": {
+			"type": "set",
+			"handlers": [
+				"stdout"
+			]
+		},
+		"stdout": {
+			"type": "pipe",
+			"command": "cat"
+		}
+	},
+	"rabbitmq": {
+    "host": "localhost",
+    "port": 5672,
+    "user": "",
+    "password": "",
+    "vhost": "/sensu"
+	},
+	"redis": {
+    "host": "localhost",
+    "port": 6379
+	}
+}
