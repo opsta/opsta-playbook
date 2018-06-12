@@ -3,5 +3,6 @@
   gather_facts: yes
   become: true
   roles:
-    - { role: opsta.zookeeper, when: kafka_with_zookeeper | default(false) }
+    - opsta.java
+    - { role: opsta.zookeeper, when: kafka_standalone or kafka_with_zookeeper | default(false) }
     - opsta.kafka

@@ -35,6 +35,10 @@
 - src: opsta.sensu
 - src: opsta.sonarqube
 - src: opsta.uchiwa
+- src: opsta.nexus
+- src: opsta.zookeeper
+- src: opsta.kafka
+- src: opsta.nfs_server
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git

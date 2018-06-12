@@ -4,4 +4,4 @@
   become: true
   roles:
     - opsta.java
-    - opsta.zookeeper
+    - opsta.nexus
