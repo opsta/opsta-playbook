@@ -1,0 +1,3 @@
+---
+nexus_app_host: "127.0.0.1"
+nexus_all_in_one: true
