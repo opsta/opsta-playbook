@@ -4,5 +4,5 @@
   become: true
   roles:
     - opsta.java
-    - { role: opsta.zookeeper, when: kafka_standalone or kafka_with_zookeeper | default(false) }
+    - { role: opsta.zookeeper, when: kafka_with_zookeeper | default(false) }
     - opsta.kafka
