@@ -5,3 +5,4 @@
   become: true
   roles:
     - opsta.ntp
+  environment: "{{ proxy_env }}"

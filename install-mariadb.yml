@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.mariadb
+  environment: "{{ proxy_env }}"

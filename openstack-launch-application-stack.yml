@@ -5,6 +5,7 @@
   gather_facts: no
   roles:
     - opsta.openstack_launch_instances
+  environment: "{{ proxy_env }}"
 
 - name: Install python2
   hosts: launched_openstack_instances
@@ -17,6 +18,7 @@
       when: host_preparation_apt_cacher_ng is defined
     - name: Install Python 2
       raw: "python --version || apt update && apt install -y python"
+  environment: "{{ proxy_env }}"
 
 - name: Configure instance(s)
   hosts: launched_openstack_instances
@@ -27,6 +29,7 @@
     - role: opsta.install_docker
     - role: opsta.newrelic
       when: newrelic_license_key is defined
+  environment: "{{ proxy_env }}"
 
 - name: Configure Docker Machine
   hosts: launched_openstack_instances
@@ -40,6 +43,7 @@
       when: |
         automated_docker_name is defined or
         automated_docker_sensu_client_rabbitmq_host is defined
+  environment: "{{ proxy_env }}"
 
 - name: Deploy service
   hosts: launched_openstack_instances
@@ -51,6 +55,7 @@
   roles:
     - role: opsta.automated_docker
       when: automated_docker_name is defined
+  environment: "{{ proxy_env }}"
 
 - name: Deploy Keepalived
   hosts: launched_openstack_instances
@@ -62,6 +67,7 @@
         automated_docker_name is defined and
         automated_docker_name == 'haproxy' and
         os_instance.count > 1
+  environment: "{{ proxy_env }}"
 
 - name: Deploy Sensu Client
   hosts: launched_openstack_instances
@@ -74,3 +80,4 @@
     - role: opsta.automated_docker
       automated_docker_name: sensu_client
       when: automated_docker_sensu_client_rabbitmq_host is defined
+  environment: "{{ proxy_env }}"

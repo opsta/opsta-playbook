@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.php
+  environment: "{{ proxy_env }}"

@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.haproxy
+  environment: "{{ proxy_env }}"

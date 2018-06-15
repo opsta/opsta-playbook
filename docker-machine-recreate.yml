@@ -8,3 +8,4 @@
       docker_machine_create: true
       docker_machine_manage_config: true
       docker_machine_remove: true
+  environment: "{{ proxy_env }}"

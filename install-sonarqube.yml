@@ -6,3 +6,4 @@
     - { role: opsta.java, when: sonarqube_all_in_one | default(false) }
     - { role: opsta.postgresql, when: sonarqube_all_in_one | default(false) }
     - opsta.sonarqube
+  environment: "{{ proxy_env }}"

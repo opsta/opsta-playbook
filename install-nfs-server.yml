@@ -1,7 +1,0 @@
----
-- hosts: all
-  gather_facts: yes
-  become: true
-  roles:
-    - opsta.nfs_server
-

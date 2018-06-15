@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.postgresql
+  environment: "{{ proxy_env }}"

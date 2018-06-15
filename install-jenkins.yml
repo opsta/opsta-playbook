@@ -5,3 +5,4 @@
   roles:
     - opsta.java
     - opsta.jenkins
+  environment: "{{ proxy_env }}"

@@ -4,3 +4,4 @@
   connection: local
   roles:
     - role: opsta.replace_vault
+  environment: "{{ proxy_env }}"

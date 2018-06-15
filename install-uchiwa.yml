@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.uchiwa
+  environment: "{{ proxy_env }}"

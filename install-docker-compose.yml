@@ -4,3 +4,4 @@
   become: false
   roles:
     - role: opsta.docker_compose
+  environment: "{{ proxy_env }}"

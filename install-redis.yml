@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.redis
+  environment: "{{ proxy_env }}"

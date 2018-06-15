@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.keepalived
+  environment: "{{ proxy_env }}"

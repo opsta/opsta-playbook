@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.sensu_grid
+  environment: "{{ proxy_env }}"

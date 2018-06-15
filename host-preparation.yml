@@ -11,6 +11,7 @@
       raw: python --version || apt update && apt install -y python
   roles:
     - opsta.host_preparation
+  environment: "{{ proxy_env }}"
 
 # Run to setup NTP Server/Client with gathering facts
 - hosts: all
@@ -18,3 +19,4 @@
   become: true
   roles:
     - opsta.ntp
+  environment: "{{ proxy_env }}"
