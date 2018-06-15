@@ -6,3 +6,4 @@
   serial: 1
   roles:
     - opsta.pdns
+  environment: "{{ proxy_env }}"

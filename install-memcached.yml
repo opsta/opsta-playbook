@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.memcached
+  environment: "{{ proxy_env }}"

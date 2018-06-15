@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.rabbitmq
+  environment: "{{ proxy_env }}"

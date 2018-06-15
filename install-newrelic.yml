@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.newrelic
+  environment: "{{ proxy_env }}"

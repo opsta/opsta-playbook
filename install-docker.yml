@@ -3,3 +3,4 @@
   become: true
   roles:
     - opsta.install_docker
+  environment: "{{ proxy_env }}"

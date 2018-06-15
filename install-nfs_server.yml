@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.nfs_server
+  environment: "{{ proxy_env }}"

@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.telegraf
+  environment: "{{ proxy_env }}"

@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.elasticsearch
+  environment: "{{ proxy_env }}"

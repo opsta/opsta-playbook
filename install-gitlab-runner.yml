@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.gitlab_runner
+  environment: "{{ proxy_env }}"

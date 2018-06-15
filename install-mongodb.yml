@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.mongodb
+  environment: "{{ proxy_env }}"

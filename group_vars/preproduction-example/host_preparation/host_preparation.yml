@@ -5,6 +5,15 @@
 # Change to true if you want to install latest Ubuntu kernel
 #host_preparation_install_latest_kernel: false
 
+# Proxy environment
+#proxy_env:
+#  http_proxy: http://proxy.example.com:8080
+#  https_proxy: http://proxy.example.com:8080
+#  ftp_proxy: http://proxy.example.com:8080
+#  HTTP_PROXY: http://proxy.example.com:8080
+#  HTTPS_PROXY: http://proxy.example.com:8080
+#  FTP_PROXY: http://proxy.example.com:8080
+
 # Uncomment this line if you want to use apt-cacher-ng
 #host_preparation_apt_cacher_ng: http://apt-cacher-ng.example.com:3142
 
@@ -27,6 +36,9 @@
 # These variables is default. Uncomment to change as you need
 #host_preparation_need_reboot: false
 #host_preparation_reboot_timeout: 600
+
+# Change to true if you want to sudo without password
+#host_preparation_remove_sudo_password: false
 
 # Change this to true if you want to tuning your Ubuntu
 #host_preparation_is_tuning: false

@@ -4,3 +4,4 @@
   become: true
   roles:
     - opsta.influxdb
+  environment: "{{ proxy_env }}"
