@@ -5,4 +5,4 @@
   gather_facts: no
   roles:
     - opsta.openstack_launch_instances
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

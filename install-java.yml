@@ -4,4 +4,4 @@
   become: true
   roles:
     - opsta.java
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

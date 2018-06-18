@@ -3,5 +3,6 @@
   gather_facts: yes
   become: true
   roles:
+    - opsta.erlang
     - opsta.rabbitmq
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

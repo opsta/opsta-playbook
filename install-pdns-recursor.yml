@@ -4,4 +4,4 @@
   become: true
   roles:
     - opsta.pdns_recursor
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

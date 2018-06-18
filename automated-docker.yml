@@ -8,4 +8,4 @@
   serial: 1
   roles:
     - role: opsta.automated_docker
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

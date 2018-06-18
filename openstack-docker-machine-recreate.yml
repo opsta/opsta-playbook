@@ -5,7 +5,7 @@
   gather_facts: no
   roles:
     - opsta.openstack_launch_instances
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"
 
 - name: Configure Docker Machine
   hosts: launched_openstack_instances
@@ -17,4 +17,4 @@
       docker_machine_create: true
       docker_machine_manage_config: true
       docker_machine_remove: true
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

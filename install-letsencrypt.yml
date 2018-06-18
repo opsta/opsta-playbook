@@ -5,4 +5,4 @@
   serial: 1
   roles:
     - opsta.letsencrypt
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"
