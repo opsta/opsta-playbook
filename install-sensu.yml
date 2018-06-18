@@ -7,4 +7,4 @@
     - { role: opsta.rabbitmq, when: sensu_all_in_one | default(false) }
     - { role: opsta.redis, when: sensu_all_in_one | default(false) }
     - opsta.sensu
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

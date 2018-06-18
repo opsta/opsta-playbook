@@ -5,4 +5,4 @@
   roles:
     - opsta.java
     - opsta.zookeeper
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

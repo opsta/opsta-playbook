@@ -4,4 +4,4 @@
   become: true
   roles:
     - opsta.grafana
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"

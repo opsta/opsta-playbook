@@ -5,7 +5,7 @@
   gather_facts: no
   roles:
     - opsta.openstack_launch_instances
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"
 
 - name: Deploy service
   hosts: launched_openstack_instances
@@ -17,4 +17,4 @@
   roles:
     - role: opsta.automated_docker
       when: automated_docker_name is defined
-  environment: "{{ proxy_env }}"
+  environment: "{{ proxy_env | default({}) }}"
