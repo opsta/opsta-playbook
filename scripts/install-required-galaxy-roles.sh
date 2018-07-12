@@ -2,4 +2,6 @@
 
 set -e
 
-ansible-galaxy install -f -n -r ../requirements/galaxy-requirements.yml
+REQ_FILENAME=${1:-galaxy-requirements.yml}
+
+ansible-galaxy install -f -n -r ../requirements/$REQ_FILENAME
