@@ -3,7 +3,7 @@
   gather_facts: yes
   become: true
   roles:
-    - { role: opsta.java, when: sonarqube_all_in_one | default(false) }
-    - { role: opsta.postgresql, when: sonarqube_all_in_one | default(false) }
+    - { role: opsta.postgresql, when: sonarqube_all_in_one | default(true) }
+    - opsta.java
     - opsta.sonarqube
   environment: "{{ proxy_env | default({}) }}"
