@@ -60,4 +60,4 @@ Now this part is gonna be very different from the first two because of Openstack
 1. Check your new instance in Openstack server
 
 ## Next
-[Deploy nginx service](04-deploy-nginx)
+[Deploy nginx service](04-deploy-nginx.md)
