@@ -1,3 +1,4 @@
 ---
 kafka_standalone: true
 kafka_with_zookeeper: true
+use_zookeeper_role: false
