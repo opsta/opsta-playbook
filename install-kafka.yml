@@ -4,6 +4,5 @@
   become: true
   roles:
     - opsta.java
-    - { role: opsta.zookeeper, when: kafka_with_zookeeper | default(false) }
     - opsta.kafka
   environment: "{{ proxy_env | default({}) }}"
