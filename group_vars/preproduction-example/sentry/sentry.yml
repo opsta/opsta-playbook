@@ -1,5 +1,5 @@
 sentry_all_in_one: true
-sentry_verion: 8.22.0
+sentry_version: 8.22.0
 
 sentry_configuration:
   db_engine: sentry.db.postgres
