@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - { role: opsta.redis, when: sentry_all_in_one | default(false) }
+    - { role: opsta.postgresql, when: sentry_all_in_one | default(false) }
+    - opsta.sentry
+  environment: "{{ proxy_env | default({}) }}"
