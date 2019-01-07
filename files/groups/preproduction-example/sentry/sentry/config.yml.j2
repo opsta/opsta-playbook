@@ -53,9 +53,14 @@ system.secret-key: 'o)zijx^n9c@k^asi4a777xb)d*&kgzqv3g12lup%3czsv6im6!'
 redis.clusters:
   default:
     hosts:
-      0:
-        host: {{ sentry_configuration.redis_host }}
-        port: {{ sentry_configuration.redis_port }}
+{% for r in sentry_redis_conf %}
+      {{ loop.index-1 }}:
+        host: {{ r.host }}
+        port: {{ r.port }}
+{% if r.password is defined %}
+        password: {{ r.password }}
+{% endif %}
+{% endfor %}
 
 ################
 # File storage #

@@ -7,16 +7,18 @@ import os.path
 CONF_ROOT = os.path.dirname(__file__)
 
 DATABASES = {
-    'default': {
-        'ENGINE': '{{ sentry_configuration.db_engine }}',
-        'NAME': '{{ sentry_configuration.db_name }}',
-        'USER': '{{ sentry_configuration.db_user }}',
-        'PASSWORD': '{{ sentry_configuration.db_password }}',
-        'HOST': '{{ sentry_configuration.db_host }}',
-        'PORT': '{{ sentry_configuration.db_port }}',
+{% for p in sentry_postgres_conf %}
+    '{{ p.db_model }}': {
+        'ENGINE': '{{ p.db_engine }}',
+        'NAME': '{{ p.db_name }}',
+        'USER': '{{ p.db_user }}',
+        'PASSWORD': '{{ p.db_password }}',
+        'HOST': '{{ p.db_host }}',
+        'PORT': '{{ p.db_port }}',
         'AUTOCOMMIT': True,
         'ATOMIC_REQUESTS': False,
-    }
+    },
+{% endfor %}
 }
 
 # You should not change this setting after your database has been created
