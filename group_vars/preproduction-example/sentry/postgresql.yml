@@ -1,0 +1,7 @@
+postgresql_users:
+  - username: user01
+    password: password
+    db: sentry
+    roles: SUPERUSER
+postgresql_databases:
+  - sentry

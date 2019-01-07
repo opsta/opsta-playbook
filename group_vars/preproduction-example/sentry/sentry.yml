@@ -1,0 +1,12 @@
+sentry_all_in_one: true
+sentry_verion: 8.22.0
+
+sentry_configuration:
+  db_engine: sentry.db.postgres
+  db_host: 127.0.0.1
+  db_name: sentry
+  db_port: 5432
+  db_user: user01
+  db_password: password
+  redis_host: 127.0.0.1
+  redis_port: 6379
