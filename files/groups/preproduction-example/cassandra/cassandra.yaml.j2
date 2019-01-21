@@ -31,10 +31,12 @@ saved_caches_directory: /var/lib/cassandra/saved_caches
 commitlog_sync: periodic
 commitlog_sync_period_in_ms: 10000
 commitlog_segment_size_in_mb: 32
+{% set cassandra_seeds_hosts = [] -%}
+{% for host in groups["cassandra-seeds"] -%}{{ cassandra_seeds_hosts.append(hostvars[host]['ansible_default_ipv4']['address']) }}{%- endfor %}
 seed_provider:
     - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
-          - seeds: "{{ cassandra_seeds }}"
+          - seeds: "{{ "\",\"".join(cassandra_seeds_hosts) | default('localhost', true) }}"
 concurrent_reads: 32
 concurrent_writes: 32
 concurrent_counter_writes: 32
