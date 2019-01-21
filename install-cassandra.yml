@@ -1,4 +1,11 @@
 ---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.java
+  environment: "{{ proxy_env | default({}) }}"
+
 - hosts: cassandra-seeds
   serial: 1
   gather_facts: yes
