@@ -1,0 +1,5 @@
+---
+cassandra_cluster_name: Test Cluster
+cassandra_num_token: 256
+cassandra_rpc_address: 0.0.0.0
+cassandra_endpoint_snitch: RackInferringSnitch
