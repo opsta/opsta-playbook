@@ -8,7 +8,7 @@ sentry_redis_conf:
 #     port: 6379
 #     password: password
 
-sentry_system_secret_key: 'dH([03@^AVR)hz%,UFFaaU-~<rKUDCWz;j~R__vt~ZQO~6UwdD'
+sentry_system_secret_key: CHANGEME
 
 sentry_postgres_conf:
   - db_model: default
