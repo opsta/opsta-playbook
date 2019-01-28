@@ -1,5 +1,14 @@
 ---
-cassandra_cluster_name: Test Cluster
+cassandra_cluster_name: CassandraCluster
 cassandra_num_token: 256
 cassandra_rpc_address: 0.0.0.0
-cassandra_endpoint_snitch: RackInferringSnitch
+cassandra_endpoint_snitch: GossipingPropertyFileSnitch
+cassandra_authenticator: PasswordAuthenticator
+cassandra_authorizer: CassandraAuthorizer
+cassandra_data_file_directories:
+  - /var/lib/cassandra/data1
+  - /var/lib/cassandra/data2
+  - /var/lib/cassandra/data3
+cassandra_commitlog_directory: /var/lib/cassandra/commitlog
+cassandra_saved_caches_directory: /var/lib/cassandra/saved_caches
+cassandra_hints_directory: /var/lib/cassandra/hints
