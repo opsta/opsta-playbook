@@ -14,7 +14,7 @@
     - opsta.cassandra
   environment: "{{ proxy_env | default({}) }}"
 
-- hosts: cassandra-clients
+- hosts: cassandra-nodes
   serial: 1
   gather_facts: yes
   become: true
