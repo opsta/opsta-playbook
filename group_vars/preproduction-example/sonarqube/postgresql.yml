@@ -6,3 +6,4 @@ postgresql_users:
   - username: sonarqube
     password: CHANGEME
     db: sonarqube
+    roles: CREATEDB
