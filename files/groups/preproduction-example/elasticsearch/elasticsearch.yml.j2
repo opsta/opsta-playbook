@@ -14,13 +14,35 @@
 #
 # Use a descriptive name for your cluster:
 #
-#cluster.name: my-application
+{% if elasticsearch_cluster_name is defined or not none %}
+cluster.name: {{ elasticsearch_cluster_name | default('localhost', true) }}
+{% endif %}
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-#node.name: node-1
+node.name: {{ ansible_hostname }}
+#
+# Select node role:
+#
+{% if inventory_hostname in groups['elasticsearch-master']|default([]) -%}
+node.master: true
+node.data: false
+node.ingest: true
+{% elif inventory_hostname in groups['elasticsearch-data']|default([]) -%}
+node.master: false
+node.data: true
+node.ingest: false
+{% elif inventory_hostname in groups['elasticsearch-client']|default([]) -%}
+node.master: false
+node.data: false
+node.ingest: false
+{% else -%}
+node.master: true
+node.data: true
+node.ingest: true
+{% endif %}
 #
 # Add custom attributes to the node:
 #
@@ -30,11 +52,11 @@
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-path.data: /var/lib/elasticsearch
+path.data: {{ elasticsearch_data_path }}
 #
 # Path to log files:
 #
-path.logs: /var/log/elasticsearch
+path.logs: {{ elasticsearch_log_path }}
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -52,11 +74,23 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-#network.host: 192.168.0.1
+{% if inventory_hostname in groups['kibana']|default([]) -%}
+network.host: 127.0.0.1
+{% else -%}
+network.host: {{ ansible_default_ipv4.address }}
+{% endif %}
 #
 # Set a custom port for HTTP:
 #
-#http.port: 9200
+http.port: {{ elasticsearch_http_port }}
+#
+# Set transport address to specific IP:
+#
+transport.host: {{ ansible_default_ipv4.address }}
+# 
+# Set transport custom port:
+#
+transport.tcp.port: {{ elasticsearch_transport_port }}
 #
 # For more information, consult the network module documentation.
 #
@@ -65,11 +99,19 @@ path.logs: /var/log/elasticsearch
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-#discovery.zen.ping.unicast.hosts: ["host1", "host2"]
+{% if ansible_play_hosts | length > 1 %}
+{% set elasticsearch_cluster_hosts = [] %}
+{% for host in ansible_play_hosts %}{{ elasticsearch_cluster_hosts.append(hostvars[host]['ansible_default_ipv4']['address']) }}{% endfor %}
+discovery.zen.ping.unicast.hosts: [ "{{ "\",\"".join(elasticsearch_cluster_hosts) | default('localhost', true) }}" ]
+{% endif %}
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
 #
-#discovery.zen.minimum_master_nodes: 
+{% if inventory_hostname in groups['elasticsearch-master']|default([]) %}
+discovery.zen.minimum_master_nodes: {{ (groups['elasticsearch-master'] | length / 2) | int + 1 }}
+{% elif inventory_hostname not in groups['elasticsearch-data']|default([]) and ansible_play_hosts | length > 1 %}
+discovery.zen.minimum_master_nodes: {{ (ansible_play_hosts | length / 2) | int + 1 }}
+{% endif %}
 #
 # For more information, consult the zen discovery module documentation.
 #
@@ -86,3 +128,37 @@ path.logs: /var/log/elasticsearch
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+#
+{% if elasticsearch_license_check.stat.exists and not elasticsearch_ssl_enabled %}
+xpack.security.enabled: false
+{% else %}
+xpack.security.enabled: true
+{% if elasticsearch_ssl_enabled %}
+{% if elasticsearch_major_version == 5 -%}
+xpack.security.transport.ssl.enabled: {{ elasticsearch_ssl_transport_enabled | lower }}
+xpack.security.transport.ssl.verification_mode: certificate 
+{% if inventory_hostname in groups['kibana']|default([]) -%}
+xpack.security.http.ssl.enabled: false
+{% else -%}
+xpack.security.http.ssl.enabled: {{ elasticsearch_ssl_http_enabled | lower }}
+{% endif %}
+xpack.security.http.ssl.verification_mode: certificate
+xpack.ssl.key: {{ elasticsearch_ssl_key_file_path }}
+xpack.ssl.certificate: {{ elasticsearch_ssl_cert_file_path }}
+{% if elasticsearch_ssl_ca_check.stat.exists %}xpack.ssl.certificate_authorities: {{ elasticsearch_ssl_ca_file_path }}{% endif %}
+
+{% elif elasticsearch_major_version == 6 -%}
+xpack.security.transport.ssl.enabled: {{ elasticsearch_ssl_transport_enabled | lower }}
+xpack.security.transport.ssl.verification_mode: certificate 
+xpack.security.transport.ssl.key: {{ elasticsearch_ssl_key_file_path }}
+xpack.security.transport.ssl.certificate: {{ elasticsearch_ssl_cert_file_path }}
+{% if elasticsearch_ssl_ca_check.stat.exists %}xpack.security.transport.ssl.certificate_authorities: {{ elasticsearch_ssl_ca_file_path }}{% endif %}
+
+xpack.security.http.ssl.enabled: {{ elasticsearch_ssl_http_enabled | lower }}
+xpack.security.http.ssl.verification_mode: certificate 
+xpack.security.http.ssl.key: {{ elasticsearch_ssl_key_file_path }}
+xpack.security.http.ssl.certificate: {{ elasticsearch_ssl_cert_file_path }}
+{% if elasticsearch_ssl_ca_check.stat.exists %}xpack.security.http.ssl.certificate_authorities: {{ elasticsearch_ssl_ca_file_path }}{% endif %}
+{%- endif %}
+{% endif %}
+{% endif %}

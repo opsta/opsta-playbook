@@ -1,0 +1,18 @@
+---
+elasticsearch_major_version: 6
+
+elasticsearch_data_path: /var/lib/elasticsearch
+elasticsearch_log_path: /var/log/elasticsearch
+
+elasticsearch_cluster_name: elasticsearch-test-cluster
+elasticsearch_ssl_enabled: true
+elasticsearch_ssl_transport_enabled: true
+elasticsearch_ssl_http_enabled: true
+
+elasticsearch_host_ssl_key_file_path: "{{ elasticsearch_host_config_path | default(inventory_hostname) }}/certificate.key"
+elasticsearch_host_ssl_cert_file_path: "{{ elasticsearch_host_config_path | default(inventory_hostname) }}/certificate.crt"
+elasticsearch_host_ssl_ca_file_path: "{{ elasticsearch_host_config_path | default(inventory_hostname) }}/ca.crt"
+
+elasticsearch_min_heap_size: 2g
+elasticsearch_max_heap_size: 2g
+elasticsearch_password: CHANGEME
