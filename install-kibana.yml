@@ -4,5 +4,5 @@
   become: true
   roles:
     - opsta.java
-    - opsta.elasticsearch
+    - opsta.kibana
   environment: "{{ proxy_env | default({}) }}"

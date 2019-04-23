@@ -1,0 +1,11 @@
+---
+kibana_major_version: 6
+kibana_log_path: /var/log/kibana
+
+kibana_ssl_enabled: true
+kibana_host_ssl_key_file_path: "{{ kibana_host_config_path | default(inventory_hostname) }}/certificate.key"
+kibana_host_ssl_cert_file_path: "{{ kibana_host_config_path | default(inventory_hostname) }}/certificate.crt"
+kibana_host_ssl_ca_file_path: "{{ kibana_host_config_path | default(inventory_hostname) }}/ca.crt"
+
+kibana_elasticsearch_url: "http://localhost:9200"
+kibana_password: CHANGEME

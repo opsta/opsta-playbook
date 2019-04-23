@@ -26,6 +26,7 @@
 - src: opsta.java
 - src: opsta.mongodb
 - src: opsta.elasticsearch
+- src: opsta.kibana
 - src: opsta.graylog
 - src: opsta.memcached
 - src: opsta.erlang
