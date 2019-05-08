@@ -24,8 +24,10 @@
 # You can get Thailand's NTP from here http://www.pool.ntp.org/zone/th
 #host_preparation_ntp_server: ntp.ubuntu.com
 
-# Change the ssh port for sshd service
+# Change to true if you want to change sshd configuration
+#host_preparation_is_config_sshd: false
 #host_preparation_sshd_config: /etc/ssh/sshd_config
+# Change the ssh port for sshd service
 #host_preparation_sshd_port: 22
 
 # Role always looking for authorized_keys file in files/groups/{{ group_names[-1] }}
