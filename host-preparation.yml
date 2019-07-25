@@ -7,8 +7,8 @@
       raw: "echo 'Acquire::http::Proxy \"{{ host_preparation_apt_cacher_ng }}\";' >
           /etc/apt/apt.conf.d/11proxy"
       when: host_preparation_apt_cacher_ng is defined
-    - name: Install Python 2 first
-      raw: python --version || apt update && apt install -y python
+    - name: Install Python first
+      raw: python --version || python3 --version || (apt update && apt install -y --no-install-recommends python)
   roles:
     - opsta.host_preparation
   environment: "{{ proxy_env | default({}) }}"
