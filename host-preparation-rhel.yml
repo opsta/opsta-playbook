@@ -2,9 +2,6 @@
 - hosts: all
   gather_facts: yes
   become: true
-  pre_tasks:
-    - name: Install Python first
-      raw: python3 --version || yum install -y python3
   roles:
     - opsta.host_preparation
   environment: "{{ proxy_env | default({}) }}"
