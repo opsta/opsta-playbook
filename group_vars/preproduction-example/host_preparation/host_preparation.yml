@@ -2,8 +2,11 @@
 # Change to true if you want to use Ubuntu official repository
 #host_preparation_change_to_ubuntu_official_repository: false
 
-# Change to true if you want to install latest Ubuntu kernel
+# Change to true if you want to install latest Ubuntu kernel (Ubuntu Xenial)
 #host_preparation_install_latest_kernel: false
+
+# Change to false if you don't want to install EPEL repository (CentOS/RHEL)
+#host_preparation_epel_enabled: true
 
 # Proxy environment
 #proxy_env:

@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.host_preparation
+  environment: "{{ proxy_env | default({}) }}"
