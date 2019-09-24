@@ -1,4 +1,6 @@
 ---
 graylog_password_secret: CHANGEME
 graylog_root_password_sha2: CHANGEME
+graylog_min_heap_size: 1g
+graylog_max_heap_size: 1g
 graylog_all_in_one: true
