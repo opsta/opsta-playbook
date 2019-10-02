@@ -1,0 +1,6 @@
+---
+host_preparation_is_tuning: true
+host_preparation_sysctl_vars:
+  - { regexp: '^vm\.max_map_count \= ', line: 'vm.max_map_count = 262144' }
+host_preparation_rc_vars: {}
+host_preparation_limits_vars: {}
