@@ -1,2 +1,2 @@
 ---
-java_deb_apt_package: openjdk-11-jdk
+java_apt_package: openjdk-11-jdk
