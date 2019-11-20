@@ -6,3 +6,6 @@ graylog_root_password_sha2: CHANGEME
 graylog_min_heap_size: 1g
 graylog_max_heap_size: 1g
 graylog_all_in_one: true
+
+# In case if you use reverse proxy such as Nginx
+# graylog_http_external_uri: https://graylog.example.com
