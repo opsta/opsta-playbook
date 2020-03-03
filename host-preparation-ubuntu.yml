@@ -8,7 +8,7 @@
           /etc/apt/apt.conf.d/11proxy"
       when: host_preparation_apt_cacher_ng is defined
     - name: Install Python first
-      raw: python --version || python3 --version || (apt update && apt install -y --no-install-recommends python)
+      raw: python --version || python3 --version || (apt update && apt install -y --no-install-recommends python3)
   roles:
     - opsta.host_preparation
   environment: "{{ proxy_env | default({}) }}"
