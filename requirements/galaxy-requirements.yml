@@ -26,7 +26,6 @@
 - src: opsta.java
 - src: opsta.mongodb
 - src: opsta.elasticsearch
-- src: opsta.kibana
 - src: opsta.graylog
 - src: opsta.memcached
 - src: opsta.erlang
@@ -40,7 +39,6 @@
 - src: opsta.zookeeper
 - src: opsta.kafka
 - src: opsta.nfs_server
-- src: opsta.couchbase
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git
