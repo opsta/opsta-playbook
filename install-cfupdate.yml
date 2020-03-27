@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.cfupdate
+  environment: "{{ proxy_env | default({}) }}"

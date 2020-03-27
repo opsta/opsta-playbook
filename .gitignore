@@ -20,3 +20,4 @@ vault*
 *.key
 .DS_Store
 .vscode
+.terraform
