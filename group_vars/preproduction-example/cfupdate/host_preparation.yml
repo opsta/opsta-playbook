@@ -1,0 +1,3 @@
+---
+host_preparation_base_packages:
+  - curl # This is needed for cfupdate

@@ -6,3 +6,7 @@ cfupdate_zone_name: example.com
 cfupdate_record_name_array:
   - nexus.example.com
   - registry.example.com
+
+# If true, it will use public ip that use to access to the internet
+# If false, it will use interface ip that use to access to the internet
+cfupdate_using_nat_ip: true
