@@ -3,7 +3,7 @@
 # and add token with permission Zone.Zone.Read and Zone.DNS.Edit with Include.All zones from an account
 cfupdate_api_token: CHANGEME
 cfupdate_zone_name: example.com
-cfupdate_record_name_array:
+cfupdate_records:
   - nexus.example.com
   - registry.example.com
 
