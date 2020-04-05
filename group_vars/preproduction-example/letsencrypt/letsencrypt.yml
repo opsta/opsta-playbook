@@ -4,3 +4,15 @@ le_domains:
     method: standalone
     key_path: /etc/gitlab/ssl/git.example.com.key
     fullchain_path: /etc/gitlab/ssl/git.example.com.crt
+  # Use Cloudflare Method
+  # In order to use the new token, the token currently needs access read access to Zone.Zone, 
+  # and write access to Zone.DNS, across all Zones.
+  # https://github.com/acmesh-official/acme.sh/wiki/dnsapi#1-cloudflare-option
+  - domain: jenkins.example.com
+    method: dns
+    dns: dns_cf
+    cf_token: CHANGEME
+    cf_account_id: CHANGEME
+    cf_zone_id: CHANGEME
+    key_path: /etc/jenkins/ssl/jenkins.example.com.key
+    fullchain_path: /etc/jenkins/ssl/jenkins.example.com.crt
