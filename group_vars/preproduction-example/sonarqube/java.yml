@@ -1,2 +1,2 @@
 ---
-java_apt_package: oracle-java8-installer
+java_apt_package: openjdk-11-jdk
