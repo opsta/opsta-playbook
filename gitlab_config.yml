@@ -1,0 +1,7 @@
+---
+- name: GitLab Configuration
+  hosts: all
+  connection: local
+  gather_facts: no
+  roles:
+    - opsta.gitlab_config

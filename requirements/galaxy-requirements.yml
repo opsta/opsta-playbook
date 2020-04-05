@@ -42,6 +42,7 @@
 - src: opsta.nfs_server
 - src: opsta.couchbase
 - src: opsta.cfupdate
+- src: opsta.gitlab_config
 - src: git+https://github.com/PowerDNS/pdns-ansible.git
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git
