@@ -1,0 +1,5 @@
+---
+coredns_main_zone: example.com
+coredns_forward_tls: true
+coredns_forward_servers: [ "tls://1.1.1.1", "tls://1.0.0.1" ]
+coredns_forward_tls_server_name: cloudflare-dns.com

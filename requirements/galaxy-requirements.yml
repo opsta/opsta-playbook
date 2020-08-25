@@ -46,3 +46,5 @@
   name: opsta.pdns
 - src: git+https://github.com/PowerDNS/pdns_recursor-ansible.git
   name: opsta.pdns_recursor
+- src: opsta.coredns
+- src: opsta.etcd

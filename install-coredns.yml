@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.coredns
+  environment: "{{ proxy_env | default({}) }}"
