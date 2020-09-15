@@ -1,0 +1,8 @@
+---
+- name: Jenkins Configuration
+  hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.jenkins_config
+  environment: "{{ proxy_env | default({}) }}"

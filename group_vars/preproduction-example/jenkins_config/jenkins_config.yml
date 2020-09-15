@@ -1,0 +1,25 @@
+---
+jc_url: https://jenkins.example.com
+jc_username: admin
+jc_password: CHANGEME
+
+jc_plugins:
+  - gitlab-plugin
+  - pipeline-build-step
+  - pipeline-stage-step
+  - pipeline-stage-view
+  - workflow-multibranch
+  - workflow-durable-task-step
+  - workflow-basic-steps
+  - workflow-cps-global-lib
+  - docker-workflow
+  - nexus-artifact-uploader
+  - kubernetes
+  - credentials-binding
+  - ssh-agent
+  - git-parameter
+  - sonar
+  - sonar-quality-gates
+  - dependency-check-jenkins-plugin
+  - robot
+  - matrix-auth

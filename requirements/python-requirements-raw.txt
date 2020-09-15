@@ -1,4 +1,5 @@
-ansible
+ansible>=2.8
 boto
 dnspython
 docker
+python-gitlab<=1.12.1

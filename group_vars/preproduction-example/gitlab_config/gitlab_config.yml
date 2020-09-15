@@ -1,0 +1,43 @@
+---
+gc_api_url: https://gitlab.example.com/
+gc_api_token: "CHANGEME"
+
+gc_groups:
+  group1:
+    name: Group 1
+    visibility: private
+  group2:
+    name: Group 2
+
+gc_projects:
+  - path: myproject1
+    name: My Project 1
+    hook: "https://jenkins.example.com/job1"
+    hook_validate_certs: yes
+    group: group1
+    visibility: private
+    issues_enabled: yes
+    merge_requests_enabled: yes
+    wiki_enabled: yes
+    snippets_enabled: yes
+    deploy_key: CHANGEME
+    deploy_key_title: Jenkins CI
+    can_push: yes
+  - path: myproject2
+    name: My Project 2
+    hook: "https://jenkins.example.com/job2"
+    group: group2
+
+# Username MUST DIFFERENCE THAN gc_group_name
+gc_users:
+  user1:
+    name: User 1
+    password: "CHANGEME"
+    email: "user1@example.com"
+    sshkey_name: user1
+    sshkey_file: "CHANGEME"
+    group: group1
+    access_level: developer
+  user2:
+    name: User 2
+    email: "user2@example.com"
