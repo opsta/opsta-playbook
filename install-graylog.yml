@@ -3,7 +3,6 @@
   gather_facts: yes
   become: true
   roles:
-    - { role: opsta.java, when: graylog_all_in_one | default(false) }
     - { role: opsta.mongodb, when: graylog_all_in_one | default(false) }
     - { role: opsta.elasticsearch, when: graylog_all_in_one | default(false) }
     - opsta.graylog
